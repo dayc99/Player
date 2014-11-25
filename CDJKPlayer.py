@@ -82,8 +82,9 @@ class RpsPlayingStrategy(object):
         else:
             use = random.randrange(0,3)
 
-        # Assuming that opponent's move is going to be the value of most, play to beat it
-        return (use + 1) % 3
+        # Assuming that other will base their moves on either the most used or least used move
+        #ours is bassed off the middle used move
+        return use
 
 # Test driver
 # Run by typing "python3 CDKJPlayer.py"
@@ -92,9 +93,9 @@ if __name__ == "__main__":
     player = CDJKPlayer()
     opponent = CDJKPlayer()
     players = [opponent,player]
-    fakeinfo = ((0,1),1)
+    fakeinfo = ((0,0),0)
     fakeresult = 1
-    fakemoves = (1,2)
+    fakemoves = (0,2)
 
     player.notify(Message.Message.get_match_start_message(players))
     player.notify(Message.Message.get_round_start_message(players))
